@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT</title>
+
+    <!-- Added the Bootstrap CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="index.css"> -->
+
+    <style>
+        h1,
+        #activity {
+            margin-left: 2%;
+        }
+
+        .row {
+            padding: 5px;
+        }
+
+        .container {
+            border: 1px solid black;
+            /* padding: 20px; */
+            width: 95%;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MQTT over Web Socket</h1>
+    <h4 id="activity">Activity 4: Online MQTT Web Client</h4>
+    <div class="container">
+        <br>
+        <h4>Broker</h4>
+        <hr>
+        Address:<br>
+        <input id="broker-address" style="width: 50%;" type="text"><br>
+        <button id="connect-button" class="btn btn-primary" style="margin-top: 5px;" value="">Connect</button>
+        <button id="disconnect-button" class="btn btn-primary" style="margin-top: 5px;" value="">Disconnect</button>
+        <br><br>
+        Status:<br>
+        <input id="status" style="width: 50%;" type="text" value="Press Connect Button"><br>
+        <br><br>
+        <h4>Incoming Messages</h4>
+        <hr>
+        <table class="table table-striped" id="incomingMsgs">
+            <thead>
+                <tr>
+                    <th scope="col">Topic</th>
+                    <th scope="col">Payload</th>
+                    <th scope="col">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="incomingInfos">
+
+            </tbody>
+        </table>
+        <br>
+        <hr style="border: 3px solid black;">
+        <div class="col-sm-6">
+            <br>
+            <h4>Publish</h4>
+            <hr>
+            Topic:<br>
+            <input id="pub-topic-input" style="width: 50%;" type="text"><br>
+            Payload:<br>
+            <input id="pub-payload-input" style="width: 50%;" type="text"><br>
+            <button id="pub-button" class="btn btn-primary" style="margin-top: 5px;" value="">Publish</button>
+            <br><br>
+            <h4>Published Messages</h4>
+            <hr>
+            <table class="table table-striped" id="pubMsg">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Payload</th>
+                        <th scope="col">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody id="pubInfos">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <br>
+            <h4>Subscribe</h4>
+            <hr><br>
+            Topic:<br>
+            <input id="sub-input" style="width: 50%;" type="text"><br>
+            <button id="sub-button" class="btn btn-primary" style="margin-top: 5px;" value="">Subscribe</button>
+            <button id="unsub-button" class="btn btn-primary" style="margin-top: 5px;" value="">Unsubscribe</button>
+            <br><br><br>
+            <h4></h4>
+            <h4>Subscribed Messages</h4>
+            <hr>
+            <table class="table table-striped" id="subMsg">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody id="subInfos">
+
+                </tbody>
+            </table>
+        </div>
+    </div><br>
+</body>
+<script src="./browserMqtt.js"></script>
+<script src="./index.js"></script>
+
+</html>
